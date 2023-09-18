@@ -14,6 +14,13 @@
 		E412E0F12AA604CD003C3F0B /* Lecture3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0F02AA604CD003C3F0B /* Lecture3Tests.swift */; };
 		E412E0FB2AA604CD003C3F0B /* Lecture3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0FA2AA604CD003C3F0B /* Lecture3UITests.swift */; };
 		E412E0FD2AA604CD003C3F0B /* Lecture3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0FC2AA604CD003C3F0B /* Lecture3UITestsLaunchTests.swift */; };
+		E412E10A2AA6059F003C3F0B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E1092AA6059F003C3F0B /* Contact.swift */; };
+		E412E10C2AA607BB003C3F0B /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */; };
+		E4241C242AB07C1700C74540 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C232AB07C1700C74540 /* CPData.swift */; };
+		E4241C262AB07F8A00C74540 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C252AB07F8A00C74540 /* Decoder.swift */; };
+		E4241C282AB081B800C74540 /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C272AB081B800C74540 /* PhoneNumberView.swift */; };
+		E4241C2A2AB0AF2C00C74540 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = E4241C292AB086AC00C74540 /* CountryNumbers.json */; };
+		E46942A92AA65D22007D00F8 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46942A82AA65D22007D00F8 /* AddContactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		E412E0F62AA604CD003C3F0B /* Lecture3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lecture3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E412E0FA2AA604CD003C3F0B /* Lecture3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture3UITests.swift; sourceTree = "<group>"; };
 		E412E0FC2AA604CD003C3F0B /* Lecture3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E412E1092AA6059F003C3F0B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
+		E4241C232AB07C1700C74540 /* CPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
+		E4241C252AB07F8A00C74540 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		E4241C272AB081B800C74540 /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
+		E4241C292AB086AC00C74540 /* CountryNumbers.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
+		E46942A82AA65D22007D00F8 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +110,13 @@
 			children = (
 				E412E0DF2AA604C9003C3F0B /* Lecture3App.swift */,
 				E412E0E12AA604C9003C3F0B /* ContentView.swift */,
+				E4241C252AB07F8A00C74540 /* Decoder.swift */,
+				E4241C232AB07C1700C74540 /* CPData.swift */,
+				E46942A82AA65D22007D00F8 /* AddContactView.swift */,
+				E4241C292AB086AC00C74540 /* CountryNumbers.json */,
+				E4241C272AB081B800C74540 /* PhoneNumberView.swift */,
+				E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */,
+				E412E1092AA6059F003C3F0B /* Contact.swift */,
 				E412E0E32AA604CC003C3F0B /* Assets.xcassets */,
 				E412E0E52AA604CC003C3F0B /* Preview Content */,
 			);
@@ -231,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4241C2A2AB0AF2C00C74540 /* CountryNumbers.json in Resources */,
 				E412E0E72AA604CC003C3F0B /* Preview Assets.xcassets in Resources */,
 				E412E0E42AA604CC003C3F0B /* Assets.xcassets in Resources */,
 			);
@@ -257,6 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4241C242AB07C1700C74540 /* CPData.swift in Sources */,
+				E412E10C2AA607BB003C3F0B /* ContactDetailView.swift in Sources */,
+				E46942A92AA65D22007D00F8 /* AddContactView.swift in Sources */,
+				E4241C282AB081B800C74540 /* PhoneNumberView.swift in Sources */,
+				E412E10A2AA6059F003C3F0B /* Contact.swift in Sources */,
+				E4241C262AB07F8A00C74540 /* Decoder.swift in Sources */,
 				E412E0E22AA604C9003C3F0B /* ContentView.swift in Sources */,
 				E412E0E02AA604C9003C3F0B /* Lecture3App.swift in Sources */,
 			);
@@ -417,6 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lecture3/Preview Content\"";
+				DEVELOPMENT_TEAM = MJBZJ6F9V3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lecture3/Preview Content\"";
+				DEVELOPMENT_TEAM = MJBZJ6F9V3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
