@@ -8,10 +8,23 @@
 import SwiftUI
 
 @main
-struct Lecture3App: App {
+struct Lecture3App: App { // @TODO: rename project, lol
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
-    }
+            TabView {
+                ContactListView()
+                    .tabItem {
+                        Label("Contacts", systemImage: "book")
+                    }
+                ProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person.crop.circle")
+                    }
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+            } // TabView
+        } // WindowGroup
+    } // Scene
 }

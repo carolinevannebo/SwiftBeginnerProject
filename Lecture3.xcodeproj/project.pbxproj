@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E412E0E02AA604C9003C3F0B /* Lecture3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0DF2AA604C9003C3F0B /* Lecture3App.swift */; };
-		E412E0E22AA604C9003C3F0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0E12AA604C9003C3F0B /* ContentView.swift */; };
+		E412E0E22AA604C9003C3F0B /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0E12AA604C9003C3F0B /* ContactList.swift */; };
 		E412E0E42AA604CC003C3F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E412E0E32AA604CC003C3F0B /* Assets.xcassets */; };
 		E412E0E72AA604CC003C3F0B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E412E0E62AA604CC003C3F0B /* Preview Assets.xcassets */; };
 		E412E0F12AA604CD003C3F0B /* Lecture3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0F02AA604CD003C3F0B /* Lecture3Tests.swift */; };
@@ -18,9 +18,11 @@
 		E412E10C2AA607BB003C3F0B /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */; };
 		E4241C242AB07C1700C74540 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C232AB07C1700C74540 /* CPData.swift */; };
 		E4241C262AB07F8A00C74540 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C252AB07F8A00C74540 /* Decoder.swift */; };
-		E4241C282AB081B800C74540 /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C272AB081B800C74540 /* PhoneNumberView.swift */; };
 		E4241C2A2AB0AF2C00C74540 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = E4241C292AB086AC00C74540 /* CountryNumbers.json */; };
 		E46942A92AA65D22007D00F8 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46942A82AA65D22007D00F8 /* AddContactView.swift */; };
+		E4EDA86B2AC1D52900BF2ADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */; };
+		E4EDA86D2AC1D6A000BF2ADD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */; };
+		E4EDA8722AC314C500BF2ADD /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E4EDA8712AC314C500BF2ADD /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 /* Begin PBXFileReference section */
 		E412E0DC2AA604C9003C3F0B /* Lecture3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lecture3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E412E0DF2AA604C9003C3F0B /* Lecture3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture3App.swift; sourceTree = "<group>"; };
-		E412E0E12AA604C9003C3F0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E412E0E12AA604C9003C3F0B /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 		E412E0E32AA604CC003C3F0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E412E0E62AA604CC003C3F0B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E412E0EC2AA604CD003C3F0B /* Lecture3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lecture3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,9 +57,10 @@
 		E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		E4241C232AB07C1700C74540 /* CPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		E4241C252AB07F8A00C74540 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		E4241C272AB081B800C74540 /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
 		E4241C292AB086AC00C74540 /* CountryNumbers.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		E46942A82AA65D22007D00F8 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4EDA8722AC314C500BF2ADD /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,13 +113,14 @@
 			isa = PBXGroup;
 			children = (
 				E412E0DF2AA604C9003C3F0B /* Lecture3App.swift */,
-				E412E0E12AA604C9003C3F0B /* ContentView.swift */,
+				E412E0E12AA604C9003C3F0B /* ContactList.swift */,
 				E4241C252AB07F8A00C74540 /* Decoder.swift */,
 				E4241C232AB07C1700C74540 /* CPData.swift */,
+				E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */,
 				E46942A82AA65D22007D00F8 /* AddContactView.swift */,
 				E4241C292AB086AC00C74540 /* CountryNumbers.json */,
-				E4241C272AB081B800C74540 /* PhoneNumberView.swift */,
 				E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */,
+				E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */,
 				E412E1092AA6059F003C3F0B /* Contact.swift */,
 				E412E0E32AA604CC003C3F0B /* Assets.xcassets */,
 				E412E0E52AA604CC003C3F0B /* Preview Content */,
@@ -164,6 +169,9 @@
 			dependencies = (
 			);
 			name = Lecture3;
+			packageProductDependencies = (
+				E4EDA8712AC314C500BF2ADD /* KeychainSwift */,
+			);
 			productName = Lecture3;
 			productReference = E412E0DC2AA604C9003C3F0B /* Lecture3.app */;
 			productType = "com.apple.product-type.application";
@@ -236,6 +244,9 @@
 				Base,
 			);
 			mainGroup = E412E0D32AA604C9003C3F0B;
+			packageReferences = (
+				E4EDA8702AC314C500BF2ADD /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = E412E0DD2AA604C9003C3F0B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -279,13 +290,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4EDA86B2AC1D52900BF2ADD /* ProfileView.swift in Sources */,
 				E4241C242AB07C1700C74540 /* CPData.swift in Sources */,
 				E412E10C2AA607BB003C3F0B /* ContactDetailView.swift in Sources */,
+				E4EDA86D2AC1D6A000BF2ADD /* SettingsView.swift in Sources */,
 				E46942A92AA65D22007D00F8 /* AddContactView.swift in Sources */,
-				E4241C282AB081B800C74540 /* PhoneNumberView.swift in Sources */,
 				E412E10A2AA6059F003C3F0B /* Contact.swift in Sources */,
 				E4241C262AB07F8A00C74540 /* Decoder.swift in Sources */,
-				E412E0E22AA604C9003C3F0B /* ContentView.swift in Sources */,
+				E412E0E22AA604C9003C3F0B /* ContactList.swift in Sources */,
 				E412E0E02AA604C9003C3F0B /* Lecture3App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,6 +619,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4EDA8702AC314C500BF2ADD /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4EDA8712AC314C500BF2ADD /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4EDA8702AC314C500BF2ADD /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E412E0D42AA604C9003C3F0B /* Project object */;
 }

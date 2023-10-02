@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContactListView: View {
     var contacts: [Contact] = [
         Contact.init(firstName: "Allfredo", lastName: "Ghemschi", phoneNumber: "000 00 000", address: "Waldemar Thranes gate 66D", email: "allfredo@ghemschi.no", image: "dog"),
         Contact.init(firstName: "Marte", lastName: "Svendsen", phoneNumber: "000 00 000", address: "Grønnegata 1A", email: "marte@svendsen.no", image: "dog2"),
@@ -37,23 +37,24 @@ struct TaskClosures: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                HStack (alignment: .center) {
-                    Text("Contacts").font(.largeTitle).foregroundColor(.primary).padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0)).fontWeight(.bold)
-                    Spacer()
-                    
+            VStack (alignment: .leading) {
+                Task1(contacts: contacts)
+            } // VStack
+            .navigationTitle("Contacts")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     if isAdmin {
                         Button {
                             isPresentingAddContactView = true
                         } label: {
-                            Image(systemName: "plus").resizable().frame(width: 20, height: 20).foregroundColor(.accentColor).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                        }.padding()
-                    } else {
-                        Text("") // guest user
+                            Image(systemName: "plus")
+                                .foregroundColor(.accentColor)
+                                .padding(.trailing, 20)
+                        }
                     }
                 }
-                Task1(contacts: contacts)
-            }.sheet(isPresented: $isPresentingAddContactView) {
+            }
+            .sheet(isPresented: $isPresentingAddContactView) {
                 AddContactViewClosure() { contact in
                     contacts.append(contact)
                     isPresentingAddContactView = false
@@ -193,8 +194,8 @@ struct VerticalListItemView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContactListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContactListView()
     }
 }

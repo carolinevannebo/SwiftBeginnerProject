@@ -23,7 +23,7 @@ struct ContactDetailView: View {
             }
             RoundedRectangle(cornerRadius: 40).foregroundColor(.white).opacity(0.7).frame(width: 350).padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
             VStack {
-                Text("\(contact.firstName) \(contact.lastName)").font(.largeTitle).textCase(.uppercase).foregroundColor(.accentColor)
+                Text("\(contact.firstName) \(contact.lastName)").font(.largeTitle).textCase(.uppercase).foregroundColor(.accentColor).padding(.top, 20)
                 Spacer()
                     VStack (alignment: .leading) {
                         Divider()

@@ -40,22 +40,72 @@ struct AddContactViewClosure: View {
     @State var countryLimit : Int = 17
     
     func addContact() async {
+        //if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
+        var base64Image = ""
+        
         if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
-            let base64Image = data.base64EncodedString()
-            let newContact = Contact(
-                firstName: firstName,
-                lastName: lastName,
-                phoneNumber: phoneNumber,
-                address: address,
-                email: email,
-                image: base64Image
-            )
-            didAddContact(newContact)
-        } else {
-            errorMessage = "Could not add contact."
-            isShowingErrorAlert = true
+            base64Image = data.base64EncodedString()
         }
+        
+        if isEmptyInput(firstName, "Please enter firstname.") == true {
+            return ()
+        }
+        
+        if isEmptyInput(lastName, "Please enter lastname.") == true {
+            return ()
+        }
+        
+        //TODO: check phone number
+        
+        if isEmptyInput(email, "Please enter email.") == true {
+            return ()
+        }
+            
+        if isValidEmail(email) == false {
+            errorMessage = "Please enter a valid email."
+            isShowingErrorAlert = true
+            return()
+        }
+        
+        if isEmptyInput(address, "Please enter address.") == true {
+            return()
+        }
+        
+        if isEmptyInput(base64Image, "Please upload a photo.") == true {
+            return ()
+        }
+            
+        let newContact = Contact(
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            address: address,
+            email: email,
+            image: base64Image
+        )
+        didAddContact(newContact)
+           
+//        } else {
+//            errorMessage = "Could not add contact."
+//            isShowingErrorAlert = true
+//        }
         return()
+    }
+    
+    func isEmptyInput(_ input: String, _ message: String) -> Bool {
+        if input == nil ?? "" {
+            errorMessage = message
+            isShowingErrorAlert = true
+            return true
+        }
+        return false
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
     var body: some View {
@@ -96,13 +146,14 @@ struct AddContactViewClosure: View {
                 CountryCodesView(countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern, countryLimit: $countryLimit, presentSheet: $presentSheet)
                 
                 HStack {
-                    PhotosPicker("Select avatar", selection: $avatarItem, matching: .images)//.padding(.horizontal)
+                    PhotosPicker("Select avatar", selection: $avatarItem, matching: .images).buttonStyle(OnboardingButtonStyle())
+                    
                     Button("Add new contact") {
                         Task {
                             await addContact()
                         }
-                    }
-                } // HStack
+                    }.buttonStyle(OnboardingButtonStyle())
+                }.padding(.horizontal) // HStack
             } // VStack
             .alert("Oops! An error occured", isPresented: $isShowingErrorAlert) {
                 Text("Some actions")
@@ -214,7 +265,6 @@ struct InputFieldView: View {
                     print("presentSheet: \(presentSheet.wrappedValue)")
                     print("keyIsFocused: \(keyIsFocused)")
                     presentSheet.wrappedValue = true
-                    //keyIsFocused = false
                     print("After button tapped")
                     print("presentSheet: \(presentSheet.wrappedValue)")
                 }
@@ -225,7 +275,6 @@ struct InputFieldView: View {
                             .foregroundColor(.secondary)
                     }
                     .focused($keyIsFocused)
-                //.keyboardType(.numbersAndPunctuation)
                     .keyboardType(.phonePad)
                     .onReceive(Just(input)) { _ in
                         applyPatternOnNumbers(&input.wrappedValue, pattern: countryPattern.wrappedValue, replacementCharacter: "#")
@@ -234,11 +283,12 @@ struct InputFieldView: View {
                     .frame(minWidth: 80, minHeight: 47)
                     .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             } // HStack
-            //.animation(.easeInOut(duration: 0.6), value: keyIsFocused)
-            .padding(.horizontal)
         } else if text == "Email" {
             HStack {
                 TextField("", text: input).placeholder(when: input.wrappedValue.isEmpty) {
+                    Text(text).foregroundColor(.secondary)
+                }
+                .placeholder(when: input.wrappedValue.isEmpty) {
                     Text(text).foregroundColor(.secondary)
                 }
                 .keyboardType(.emailAddress)
@@ -247,7 +297,6 @@ struct InputFieldView: View {
                 .background(backgroundColor, in:
                                 RoundedRectangle(cornerRadius: 10, style: .continuous))
             } // HStack
-            .padding(.horizontal)
         } else {
             HStack {
                 TextField("", text: input).placeholder(when: input.wrappedValue.isEmpty) {
@@ -259,9 +308,15 @@ struct InputFieldView: View {
                 .background(backgroundColor, in:
                                 RoundedRectangle(cornerRadius: 10, style: .continuous))
             } // HStack
-            .padding(.horizontal)
         }
     }
+    
+//    func isValidEmail(_ email: String) -> Bool {
+//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+//
+//        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+//        return emailPred.evaluate(with: email)
+//    }
     
     func applyPatternOnNumbers(_ stringvar: inout String, pattern: String, replacementCharacter: Character) {
         var pureNumber = stringvar.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
@@ -295,11 +350,39 @@ struct InputFieldView: View {
     }
 }
 
+struct OnboardingButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        
+        ZStack {
+            RoundedRectangle(cornerRadius: 10, style: .continuous )
+                .frame(height: 49)
+                .foregroundColor(Color(.systemBlue))
+            
+            configuration.label
+                .fontWeight(.semibold)
+                .foregroundColor(Color(.white))
+        }
+    }
+}
+
 extension View {
     func hideKeyboard() {
         let resign = #selector(UIResponder.resignFirstResponder)
         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
     }
+}
+
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+            
+            ZStack(alignment: alignment) {
+                placeholder().opacity(shouldShow ? 1 : 0)
+                self
+            }
+        }
 }
 
 // -----------------IGNORE--------------------------
