@@ -13,14 +13,25 @@ enum AppStorageKeys: String {
     case password
 }
 
+enum FieldToFocus {
+    case secureField, textField
+}
+
+// @TODO: require more information for new account, ask to repeat password before creating
 struct ProfileView: View {
     @State var username: String?
     @State var password: String?
+    
     @State var isLoggedIn: Bool = false
     @State var isSigningUp: Bool = false
     @State var isSigningIn: Bool = false
     
-    func onAppear() {
+    @State var isShowingErrorAlert: Bool = false
+    @State var errorMessage: String = ""
+    
+    @State var hasTappedSignOut: Bool = false
+    
+    func onAppearOld() { //@TODO: refactor this redundant shit
         if let username = UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) as? String {
             self.username = username
         }
@@ -30,7 +41,21 @@ struct ProfileView: View {
             self.password = password
         }
         
+        guard let usernameRef = username, !usernameRef.isEmpty else {
+            isLoggedIn = false
+            isSigningIn = true
+            isSigningUp = true
+            return
+        }
+        
         guard username != nil && username != "" else {
+            isLoggedIn = false
+            isSigningIn = true
+            isSigningUp = true
+            return
+        }
+        
+        guard let passwordRef = password, !passwordRef.isEmpty else {
             isLoggedIn = false
             isSigningIn = true
             isSigningUp = true
@@ -45,6 +70,20 @@ struct ProfileView: View {
         }
         
         isLoggedIn = true
+    }
+    
+    func onAppear() { //@TODO: test this function after refactoring
+        if hasTappedSignOut == true { return }
+        
+        if let username = UserDefaults.standard.object(forKey: AppStorageKeys.username.rawValue) as? String,
+           let password = KeychainSwift().get(AppStorageKeys.password.rawValue),
+           !username.isEmpty && !password.isEmpty {
+            isLoggedIn = true
+        } else {
+            isLoggedIn = false
+            isSigningIn = true
+            isSigningUp = true
+        }
     }
     
     func deleteUserTapped() {
@@ -65,6 +104,7 @@ struct ProfileView: View {
         isLoggedIn = false
         isSigningIn = true
         isSigningUp = true
+        hasTappedSignOut = true
     }
     
 
@@ -75,11 +115,11 @@ struct ProfileView: View {
                 if isLoggedIn == false {
                     
                     if isSigningIn == true && isSigningUp == false {
-                        SignInForm(username: $username, password: $password, isLoggedIn: $isLoggedIn)
+                        SignInForm(username: $username, password: $password, isLoggedIn: $isLoggedIn, isShowingErrorAlert: $isShowingErrorAlert, errorMessage: $errorMessage, hasTappedSignOut: $hasTappedSignOut)
                     } // signing in, not up
                     
                     if isSigningUp == true && isSigningIn == false {
-                        SignUpForm(username: $username, password: $password, isLoggedIn: $isLoggedIn)
+                        SignUpForm(username: $username, password: $password, isLoggedIn: $isLoggedIn, isShowingErrorAlert: $isShowingErrorAlert, errorMessage: $errorMessage, hasTappedSignOut: $hasTappedSignOut)
                     } // signing up, not in
                     
                     if isSigningUp == true && isSigningIn == true {
@@ -120,6 +160,11 @@ struct ProfileView: View {
                 onAppear()
             }
         } // NavigationView
+        .alert("Oops! An error occured", isPresented: $isShowingErrorAlert) {
+            Text("Some actions")
+        } message: {
+            Text($errorMessage.wrappedValue)
+        }
     }
 }
 
@@ -127,13 +172,29 @@ struct SignUpForm: View { // @TODO: add more fields to create profile
     @Binding var username: String?
     @Binding var password: String?
     @Binding var isLoggedIn: Bool
+    @Binding var isShowingErrorAlert: Bool
+    @Binding var errorMessage: String
+    @Binding var hasTappedSignOut: Bool
     
     func createUserTapped() {
+        if password == nil || password == "" { // Avoid runtime error
+            errorMessage = "Password can not be empty."
+            isShowingErrorAlert = true
+            return
+        }
+        
         let keychain = KeychainSwift()
         keychain.set(password!, forKey: AppStorageKeys.password.rawValue)
         
+        if username == nil || username == "" {
+            errorMessage = "Username can not be empty."
+            isShowingErrorAlert = true
+            return
+        }
+        
         UserDefaults.standard.setValue(username, forKey: AppStorageKeys.username.rawValue)
         isLoggedIn = true
+        hasTappedSignOut = false
     }
     
     var body: some View {
@@ -164,13 +225,22 @@ struct SignInForm: View {
     @Binding var password: String?
     @Binding var isLoggedIn: Bool
     
+    @Binding var isShowingErrorAlert: Bool
+    @Binding var errorMessage: String
+    
+    @Binding var hasTappedSignOut: Bool
+    
     func signInTapped() { // @TODO: alert the user when the input doesnt match
         guard let enteredUsername = username, !enteredUsername.isEmpty else {
+            errorMessage = "Please enter username."
+            isShowingErrorAlert = true
             isLoggedIn = false
             return
         }
             
         guard let enteredPassword = password, !enteredPassword.isEmpty else {
+            errorMessage = "Please enter password."
+            isShowingErrorAlert = true
             isLoggedIn = false
             return
         }
@@ -178,13 +248,16 @@ struct SignInForm: View {
         if let storedUsername = UserDefaults.standard.string(forKey: AppStorageKeys.username.rawValue),
             let storedPassword = KeychainSwift().get(AppStorageKeys.password.rawValue) {
             
-                if enteredUsername == storedUsername && enteredPassword == storedPassword {
-                    isLoggedIn = true
-                } else {
-                    isLoggedIn = false
-                }
+            if enteredUsername == storedUsername && enteredPassword == storedPassword {
+                isLoggedIn = true
+                hasTappedSignOut = false
+            } else {
+                isLoggedIn = false
+            }
             
-        } else {
+        } else { // wait what
+            errorMessage = "Incorrect log in credentials, try again."
+            isShowingErrorAlert = true
             isLoggedIn = false
         }
     }
@@ -267,10 +340,6 @@ struct PasswordField: View {
             isFieldFocus = isShowingPassword ? .textField : .secureField
         }
     }
-}
-
-enum FieldToFocus {
-    case secureField, textField
 }
 
 struct ProfileView_Previews: PreviewProvider {

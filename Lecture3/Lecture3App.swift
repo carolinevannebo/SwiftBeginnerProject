@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-@main
-struct Lecture3App: App { // @TODO: rename project, lol
+@main // @TODO: rename project, lol
+struct Lecture3App: App { // @TODO: check todos in ProfileView, create favorites tab with logic and start on settings
     var body: some Scene {
         WindowGroup {
             TabView {
