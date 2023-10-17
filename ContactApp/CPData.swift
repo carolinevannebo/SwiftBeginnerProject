@@ -1,6 +1,6 @@
 //
 //  CPData.swift
-//  Lecture3
+//  ContactApp
 //
 //  Created by Caroline Vannebo on 12/09/2023.
 //

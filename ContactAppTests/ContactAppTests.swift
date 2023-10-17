@@ -1,14 +1,14 @@
 //
-//  Lecture3Tests.swift
-//  Lecture3Tests
+//  ContactAppTests.swift
+//  ContactApp
 //
 //  Created by Caroline Vannebo on 04/09/2023.
 //
 
 import XCTest
-@testable import Lecture3
+@testable import ContactApp
 
-final class Lecture3Tests: XCTestCase {
+final class ContactAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

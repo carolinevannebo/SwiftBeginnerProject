@@ -1,6 +1,6 @@
 //
 //  ProfileView.swift
-//  Lecture3
+//  ContactApp
 //
 //  Created by Caroline Vannebo on 25/09/2023.
 //

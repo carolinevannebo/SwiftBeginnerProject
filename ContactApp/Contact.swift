@@ -1,6 +1,6 @@
 //
 //  Contact.swift
-//  Lecture3
+//  ContactApp
 //
 //  Created by Caroline Vannebo on 04/09/2023.
 //
