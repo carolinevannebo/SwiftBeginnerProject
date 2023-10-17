@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CPData: Codable, Identifiable {
+struct CPData: Identifiable, Codable {
     let id: String
     let name: String
     let flag: String
@@ -15,12 +15,6 @@ struct CPData: Codable, Identifiable {
     let dial_code: String
     let pattern: String
     let limit: Int
-                
-    static let allCountries: [CPData] = Bundle.main.decode(forName: "/Users/carolinevannebo/Downloads/iOS-safe-from-cloud/Tasks/Lecture3/Lecture3/CountryNumbers.json")
-    static let example = allCountries[0]
-    
-    //trying something
-    static let data: Data? = Bundle.main.decode(forName: "/Users/carolinevannebo/Downloads/iOS-safe-from-cloud/Tasks/Lecture3/Lecture3/CountryNumbers.json")
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

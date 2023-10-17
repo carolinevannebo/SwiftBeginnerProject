@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E412E0E02AA604C9003C3F0B /* ContactApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0DF2AA604C9003C3F0B /* ContactApp.swift */; };
-		E412E0E22AA604C9003C3F0B /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0E12AA604C9003C3F0B /* ContactList.swift */; };
+		E412E0E22AA604C9003C3F0B /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0E12AA604C9003C3F0B /* ContactListView.swift */; };
 		E412E0E42AA604CC003C3F0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E412E0E32AA604CC003C3F0B /* Assets.xcassets */; };
 		E412E0E72AA604CC003C3F0B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E412E0E62AA604CC003C3F0B /* Preview Assets.xcassets */; };
 		E412E0F12AA604CD003C3F0B /* ContactAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412E0F02AA604CD003C3F0B /* ContactAppTests.swift */; };
@@ -17,10 +17,11 @@
 		E4241C242AB07C1700C74540 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C232AB07C1700C74540 /* CPData.swift */; };
 		E4241C262AB07F8A00C74540 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4241C252AB07F8A00C74540 /* Decoder.swift */; };
 		E4241C2A2AB0AF2C00C74540 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = E4241C292AB086AC00C74540 /* CountryNumbers.json */; };
+		E4595B6D2ADECD5A006A1263 /* DemoContacts.json in Resources */ = {isa = PBXBuildFile; fileRef = E4595B6C2ADECD59006A1263 /* DemoContacts.json */; };
+		E4595B702ADED7F2006A1263 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E4595B6F2ADED7F2006A1263 /* KeychainSwift */; };
 		E46942A92AA65D22007D00F8 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46942A82AA65D22007D00F8 /* AddContactView.swift */; };
 		E4EDA86B2AC1D52900BF2ADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */; };
 		E4EDA86D2AC1D6A000BF2ADD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */; };
-		E4EDA8722AC314C500BF2ADD /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E4EDA8712AC314C500BF2ADD /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		E412E0DC2AA604C9003C3F0B /* ContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E412E0DF2AA604C9003C3F0B /* ContactApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactApp.swift; sourceTree = "<group>"; };
-		E412E0E12AA604C9003C3F0B /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
+		E412E0E12AA604C9003C3F0B /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		E412E0E32AA604CC003C3F0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E412E0E62AA604CC003C3F0B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E412E0EC2AA604CD003C3F0B /* ContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +47,7 @@
 		E4241C232AB07C1700C74540 /* CPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		E4241C252AB07F8A00C74540 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		E4241C292AB086AC00C74540 /* CountryNumbers.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
+		E4595B6C2ADECD59006A1263 /* DemoContacts.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = DemoContacts.json; sourceTree = "<group>"; };
 		E46942A82AA65D22007D00F8 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4EDA8722AC314C500BF2ADD /* KeychainSwift in Frameworks */,
+				E4595B702ADED7F2006A1263 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +78,7 @@
 				E412E0DE2AA604C9003C3F0B /* ContactApp */,
 				E412E0EF2AA604CD003C3F0B /* ContactAppTests */,
 				E412E0DD2AA604C9003C3F0B /* Products */,
+				E4595B6E2ADED7F2006A1263 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,15 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				E412E0DF2AA604C9003C3F0B /* ContactApp.swift */,
-				E412E0E12AA604C9003C3F0B /* ContactList.swift */,
-				E4241C252AB07F8A00C74540 /* Decoder.swift */,
-				E4241C232AB07C1700C74540 /* CPData.swift */,
-				E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */,
-				E46942A82AA65D22007D00F8 /* AddContactView.swift */,
-				E4241C292AB086AC00C74540 /* CountryNumbers.json */,
-				E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */,
-				E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */,
-				E412E1092AA6059F003C3F0B /* Contact.swift */,
+				E4595B692ADEC9F0006A1263 /* Views */,
+				E4595B6A2ADECA26006A1263 /* Data */,
 				E412E0E32AA604CC003C3F0B /* Assets.xcassets */,
 				E412E0E52AA604CC003C3F0B /* Preview Content */,
 			);
@@ -123,6 +119,37 @@
 			path = ContactAppTests;
 			sourceTree = "<group>";
 		};
+		E4595B692ADEC9F0006A1263 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E46942A82AA65D22007D00F8 /* AddContactView.swift */,
+				E412E10B2AA607BB003C3F0B /* ContactDetailView.swift */,
+				E412E0E12AA604C9003C3F0B /* ContactListView.swift */,
+				E4EDA86A2AC1D52900BF2ADD /* ProfileView.swift */,
+				E4EDA86C2AC1D6A000BF2ADD /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4595B6A2ADECA26006A1263 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E412E1092AA6059F003C3F0B /* Contact.swift */,
+				E4241C252AB07F8A00C74540 /* Decoder.swift */,
+				E4241C232AB07C1700C74540 /* CPData.swift */,
+				E4241C292AB086AC00C74540 /* CountryNumbers.json */,
+				E4595B6C2ADECD59006A1263 /* DemoContacts.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E4595B6E2ADED7F2006A1263 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,7 +167,7 @@
 			);
 			name = ContactApp;
 			packageProductDependencies = (
-				E4EDA8712AC314C500BF2ADD /* KeychainSwift */,
+				E4595B6F2ADED7F2006A1263 /* KeychainSwift */,
 			);
 			productName = Lecture3;
 			productReference = E412E0DC2AA604C9003C3F0B /* ContactApp.app */;
@@ -213,6 +240,7 @@
 				E4241C2A2AB0AF2C00C74540 /* CountryNumbers.json in Resources */,
 				E412E0E72AA604CC003C3F0B /* Preview Assets.xcassets in Resources */,
 				E412E0E42AA604CC003C3F0B /* Assets.xcassets in Resources */,
+				E4595B6D2ADECD5A006A1263 /* DemoContacts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +265,7 @@
 				E46942A92AA65D22007D00F8 /* AddContactView.swift in Sources */,
 				E412E10A2AA6059F003C3F0B /* Contact.swift in Sources */,
 				E4241C262AB07F8A00C74540 /* Decoder.swift in Sources */,
-				E412E0E22AA604C9003C3F0B /* ContactList.swift in Sources */,
+				E412E0E22AA604C9003C3F0B /* ContactListView.swift in Sources */,
 				E412E0E02AA604C9003C3F0B /* ContactApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,7 +541,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E4EDA8712AC314C500BF2ADD /* KeychainSwift */ = {
+		E4595B6F2ADED7F2006A1263 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E4EDA8702AC314C500BF2ADD /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;

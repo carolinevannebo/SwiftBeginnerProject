@@ -50,6 +50,6 @@ struct ContactDetailView: View {
 
 struct ContactDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactDetailView(contact: .init(firstName: "Zacke", lastName: "Berglund", phoneNumber: "000 00 000", address: "Konows gate 63", email: "zacke@berglund.no", image: "dog5"))
+        ContactDetailView(contact: .init(firstName: "Zacke", lastName: "Berglund", phoneNumber: "000 00 000", address: "Knowing street 6", email: "zacke@berglund.no", image: "dog5"))
     }
 }

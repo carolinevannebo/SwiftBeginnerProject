@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/carolinevannebo/Downloads/iOS-safe-from-cloud/Tasks/Lecture3/ContactApp.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

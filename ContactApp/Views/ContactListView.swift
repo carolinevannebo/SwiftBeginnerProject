@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ContactListView.swift
 //  ContactApp
 //
 //  Created by Caroline Vannebo on 04/09/2023.
@@ -7,21 +7,12 @@
 import SwiftUI
 
 struct ContactListView: View {
-    var contacts: [Contact] = [
-        Contact.init(firstName: "Allfredo", lastName: "Ghemschi", phoneNumber: "000 00 000", address: "Waldemar Thranes gate 66D", email: "allfredo@ghemschi.no", image: "dog"),
-        Contact.init(firstName: "Marte", lastName: "Svendsen", phoneNumber: "000 00 000", address: "Grønnegata 1A", email: "marte@svendsen.no", image: "dog2"),
-        Contact.init(firstName: "Hannah", lastName: "Melien", phoneNumber: "000 00 000", address: "Grønnegata 1A", email: "hannah@melien.no", image: "dog3"),
-        Contact.init(firstName: "Helene", lastName: "Bjerke", phoneNumber: "000 00 000", address: "Nydalen allé 17", email: "helene@bjerke.no", image: "dog4"),
-        Contact.init(firstName: "Zacke", lastName: "Berglund", phoneNumber: "000 00 000", address: "Konows gate 83", email: "zacke@berglund.no", image: "dog5"),
-        Contact.init(firstName: "Trym", lastName: "Frøystein", phoneNumber: "000 00 000", address: "Gamle enebakkvei 47A", email: "trym@frøystein.no", image: "dog6"),
-        Contact.init(firstName: "Malin", lastName: "Granly", phoneNumber: "000 00 000", address: "Sigurds gate 11", email: "malin@granly.no", image: "dog7")
-    ]
     
     var body: some View {
-        //Task1(contacts: contacts)
-        //Task2(contacts: contacts)
-        //Task5(contacts: contacts, isAdmin: true)
-        TaskClosures(contacts: contacts, isAdmin: true)
+        //Task1(contacts: Contact.demoContacts)
+        //Task2(contacts: Contact.demoContacts)
+        //Task5(contacts: Contact.demoContacts, isAdmin: true)
+        TaskClosures(contacts: Contact.demoContacts, isAdmin: true)
     }
 }
 

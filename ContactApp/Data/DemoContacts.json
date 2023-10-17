@@ -1,0 +1,58 @@
+[
+    {
+        "firstName": "Allfredo",
+        "lastName": "Ghemschi",
+        "phoneNumber": "000 00 000",
+        "address": "Lovely street 6",
+        "email": "allfredo@ghemschi.no",
+        "image": "dog"
+    },
+    {
+        "firstName": "Marte",
+        "lastName": "Svendsen",
+        "phoneNumber": "000 00 000",
+        "address": "Green street 1",
+        "email": "marte@svendsen.no",
+        "image": "dog2"
+    },
+    {
+        "firstName": "Hannah",
+        "lastName": "Melien",
+        "phoneNumber": "000 00 000",
+        "address": "Green street 1",
+        "email": "hannah@melien.no",
+        "image": "dog3"
+    },
+    {
+        "firstName": "Helene",
+        "lastName": "Bjerke",
+        "phoneNumber": "000 00 000",
+        "address": "New valley ally 1",
+        "email": "helene@bjerke.no",
+        "image": "dog4"
+    },
+    {
+        "firstName": "Zacke",
+        "lastName": "Berglund",
+        "phoneNumber": "000 00 000",
+        "address": "Knowing street 8",
+        "email": "zacke@berglund.no",
+        "image": "dog5"
+    },
+    {
+        "firstName": "Trym",
+        "lastName": "Frøystein",
+        "phoneNumber": "000 00 000",
+        "address": "Old single hill street 4",
+        "email": "trym@frøystein.no",
+        "image": "dog6"
+    },
+    {
+        "firstName": "Malin",
+        "lastName": "Granly",
+        "phoneNumber": "000 00 000",
+        "address": "Sigmund's street 1",
+        "email": "malin@granly.no",
+        "image": "dog7"
+    }
+]

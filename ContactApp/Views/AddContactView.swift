@@ -40,7 +40,6 @@ struct AddContactViewClosure: View {
     @State var countryLimit : Int = 17
     
     func addContact() async {
-        //if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
         var base64Image = ""
         
         if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
@@ -83,12 +82,9 @@ struct AddContactViewClosure: View {
             email: email,
             image: base64Image
         )
+        
         didAddContact(newContact)
-           
-//        } else {
-//            errorMessage = "Could not add contact."
-//            isShowingErrorAlert = true
-//        }
+        
         return()
     }
     
@@ -311,13 +307,6 @@ struct InputFieldView: View {
         }
     }
     
-//    func isValidEmail(_ email: String) -> Bool {
-//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-//
-//        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//        return emailPred.evaluate(with: email)
-//    }
-    
     func applyPatternOnNumbers(_ stringvar: inout String, pattern: String, replacementCharacter: Character) {
         var pureNumber = stringvar.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
         for index in 0 ..< pattern.count {
@@ -467,20 +456,7 @@ struct AddContactView: View {
 
 struct AddContactView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        let _ = Binding.constant([
-            Contact.init(firstName: "Allfredo", lastName: "Ghemschi", phoneNumber: "000 00 000", address: "Waldemar Thranes gate 66D", email: "allfredo@ghemschi.no", image: "dog"),
-            Contact.init(firstName: "Marte", lastName: "Svendsen", phoneNumber: "000 00 000", address: "Grønnegata 1A", email: "marte@svendsen.no", image: "dog2"),
-            Contact.init(firstName: "Hannah", lastName: "Melien", phoneNumber: "000 00 000", address: "Grønnegata 1A", email: "hannah@melien.no", image: "dog3"),
-            Contact.init(firstName: "Helene", lastName: "Bjerke", phoneNumber: "000 00 000", address: "Nydalen allé 17", email: "helene@bjerke.no", image: "dog4"),
-            Contact.init(firstName: "Zacke", lastName: "Berglund", phoneNumber: "000 00 000", address: "Konows gate 63", email: "zacke@berglund.no", image: "dog5"),
-            Contact.init(firstName: "Trym", lastName: "Frøystein", phoneNumber: "000 00 000", address: "Gamle enebakkvei 47A", email: "trym@frøystein.no", image: "dog6"),
-            Contact.init(firstName: "Malin", lastName: "Granly", phoneNumber: "000 00 000", address: "Sigurds gate 11", email: "malin@granly.no", image: "dog7")
-        ])
-        
-        //return AddContactView(contacts: contactsBinding)
         return AddContactViewClosure() { product in
-            
         }
     }
 }
