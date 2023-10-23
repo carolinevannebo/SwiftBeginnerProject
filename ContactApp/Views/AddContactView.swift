@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 import Combine
 
-struct AddContactViewClosure: View {
+struct AddContactView: View {
     var didAddContact: ((Contact) -> ())
     
     init(didAddContact: @escaping (Contact) -> Void) {
@@ -34,10 +34,10 @@ struct AddContactViewClosure: View {
     @State private var searchCountry: String = ""
     @State var presentSheet = false
     
-    @State var countryCode : String = "+47"
-    @State var countryFlag : String = "🇳🇴"
-    @State var countryPattern : String = "### ## ###"
-    @State var countryLimit : Int = 17
+    @State var countryCode: String = "+47"
+    @State var countryFlag: String = "🇳🇴"
+    @State var countryPattern: String = "### ## ###"
+    @State var countryLimit: Int = 17
     
     func addContact() async {
         var base64Image = ""
@@ -110,15 +110,41 @@ struct AddContactViewClosure: View {
                 Text("New contact").font(.title).padding()
                 Form {
                     
-                    InputFieldView(input: $firstName, text: "First name", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+                    TextField("", text: $firstName)
+                        .modifier(
+                            InputFieldViewModifier(input: $firstName, inputType: InputType.normalText, presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern, customPlaceholder: "First name")
+                        )
                     
-                    InputFieldView(input: $lastName, text: "Last name", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+                    TextField("", text: $lastName)
+                        .modifier(
+                            InputFieldViewModifier(input: $lastName, inputType: InputType.normalText, presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern, customPlaceholder: "Last name")
+                        )
                     
-                    InputFieldView(input: $phoneNumber, text: "Phone number", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+                    TextField("", text: $phoneNumber)
+                        .modifier(
+                            InputFieldViewModifier(input: $phoneNumber, inputType: InputType.phoneNumber, presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+                        )
+
+                    TextField("", text: $email)
+                        .modifier(
+                            InputFieldViewModifier(input: $email, inputType: InputType.email, presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+                        )
                     
-                    InputFieldView(input: $email, text: "Email", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+                    TextField("", text: $address)
+                        .modifier(
+                            InputFieldViewModifier(input: $address, inputType: InputType.normalText, presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern, customPlaceholder: "Address")
+                        )
+
                     
-                    InputFieldView(input: $address, text: "Address", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+//                    InputFieldView(input: $firstName, text: "First name", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+//
+//                    InputFieldView(input: $lastName, text: "Last name", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+//
+//                    InputFieldView(input: $phoneNumber, text: "Phone number", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+//
+//                    InputFieldView(input: $email, text: "Email", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
+//
+//                    InputFieldView(input: $address, text: "Address", presentSheet: $presentSheet, countryCode: $countryCode, countryFlag: $countryFlag, countryPattern: $countryPattern)
                     
                     if let avatarImage {
                         avatarImage
@@ -163,66 +189,6 @@ struct AddContactViewClosure: View {
     }
 }
 
-struct CountryCodesView: View {
-    @State private var searchCountry: String = ""
-    var presentSheet: Binding<Bool>
-    
-    var countryCode: Binding<String>// = "+47"
-    var countryFlag: Binding<String>// = "🇳🇴"
-    var countryPattern: Binding<String>// = "### ## ###"
-    var countryLimit: Binding<Int>// = 17
-    
-    let countries: [CPData] = Bundle.main.decode(forName: "CountryNumbers")
-    
-    init(countryCode: Binding<String>, countryFlag: Binding<String>, countryPattern: Binding<String>, countryLimit: Binding<Int>, presentSheet: Binding<Bool>) {
-        self.countryCode = countryCode
-        self.countryFlag = countryFlag
-        self.countryPattern = countryPattern
-        self.countryLimit = countryLimit
-        self.presentSheet = presentSheet
-    }
-    
-    var body: some View {
-        if presentSheet.wrappedValue == true {
-            NavigationStack {
-                
-            }.sheet(isPresented: presentSheet) {
-                NavigationView {
-                    List(filteredResorts) { country in
-                        HStack {
-                            Text(country.flag)
-                            Text(country.name)
-                                .font(.headline)
-                            Spacer()
-                            Text(country.dial_code)
-                                .foregroundColor(.secondary)
-                        } // HStack
-                        .onTapGesture {
-                            countryFlag.wrappedValue = country.flag
-                            countryCode.wrappedValue = country.dial_code
-                            countryPattern.wrappedValue = country.pattern
-                            countryLimit.wrappedValue = country.limit
-                            presentSheet.wrappedValue = false
-                            searchCountry = ""
-                        } // HStack onTapGesture
-                    } // List
-                    .listStyle(.plain)
-                    .searchable(text: $searchCountry, prompt: "Your country")
-                } // NavigationView
-                .presentationDetents([.medium, .large])
-            } // Sheet
-            .presentationDetents([.medium, .large])
-            
-            var filteredResorts: [CPData] {
-                if searchCountry.isEmpty {
-                    return countries
-                } else {
-                    return countries.filter { $0.name.contains(searchCountry) }
-                }
-            }
-        }
-    }
-}
 
 struct InputFieldView: View {
     @FocusState private var keyIsFocused: Bool
@@ -339,21 +305,6 @@ struct InputFieldView: View {
     }
 }
 
-struct OnboardingButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        
-        ZStack {
-            RoundedRectangle(cornerRadius: 10, style: .continuous )
-                .frame(height: 49)
-                .foregroundColor(Color(.systemBlue))
-            
-            configuration.label
-                .fontWeight(.semibold)
-                .foregroundColor(Color(.white))
-        }
-    }
-}
-
 extension View {
     func hideKeyboard() {
         let resign = #selector(UIResponder.resignFirstResponder)
@@ -374,89 +325,89 @@ extension View {
         }
 }
 
-// -----------------IGNORE--------------------------
-
-struct AddContactView: View {
-    @Binding var contacts: [Contact]
-    
-    @State var firstName: String = ""
-    @State var lastName: String = ""
-    @State var phoneNumber: String = ""
-    @State var email: String = ""
-    @State var address: String = ""
-    @State var image: String = ""
-    
-    @State private var avatarItem: PhotosPickerItem?
-    @State private var avatarImage: Image?
-    
-    @State var isShowingErrorAlert: Bool = false
-    
-    func addContact() async {
-        if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
-            let base64Image = data.base64EncodedString()
-            let newContact = Contact(
-                firstName: firstName,
-                lastName: lastName,
-                phoneNumber: phoneNumber,
-                address: address,
-                email: email,
-                image: base64Image
-            )
-            contacts.append(newContact)
-        } else {
-            isShowingErrorAlert = true
-        }
-        return()
-    }
-    
-    var body: some View {
-        VStack { // gjør denne til NavigationView
-            Form {
-                TextField("First name", text: $firstName)
-                TextField("Last name", text: $lastName)
-                TextField("Phone number", text: $phoneNumber)
-                TextField("Email", text: $email).textCase(.lowercase)
-                TextField("Address", text: $address)
-                
-                PhotosPicker("Select avatar", selection: $avatarItem, matching: .images)
-                if let avatarImage {
-                    avatarImage
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                }
-            }.onChange(of: avatarItem) { _ in
-                Task {
-                    if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
-                        if let uiImage = UIImage(data: data) {
-                            avatarImage = Image(uiImage: uiImage)
-                            return
-                        }
-                    }
-                    
-                    print("Failed")
-                }
-            }
-            HStack {
-                Button("Add") {
-                    Task {
-                        await addContact()
-                    }
-                }
-            }
-        }.alert("Oops! An error occured", isPresented: $isShowingErrorAlert) {
-            Text("Some actions")
-        } message: {
-            Text("Some message")
-        }
-    }
-}
-
-// ---------------------------------------------
-
 struct AddContactView_Previews: PreviewProvider {
     static var previews: some View {
-        return AddContactViewClosure() { product in
+        return AddContactView() { product in
         }
     }
 }
+
+// -----------------IGNORE--------------------------
+
+//struct AddContactView: View {
+//    @Binding var contacts: [Contact]
+//
+//    @State var firstName: String = ""
+//    @State var lastName: String = ""
+//    @State var phoneNumber: String = ""
+//    @State var email: String = ""
+//    @State var address: String = ""
+//    @State var image: String = ""
+//
+//    @State private var avatarItem: PhotosPickerItem?
+//    @State private var avatarImage: Image?
+//
+//    @State var isShowingErrorAlert: Bool = false
+//
+//    func addContact() async {
+//        if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
+//            let base64Image = data.base64EncodedString()
+//            let newContact = Contact(
+//                firstName: firstName,
+//                lastName: lastName,
+//                phoneNumber: phoneNumber,
+//                address: address,
+//                email: email,
+//                image: base64Image
+//            )
+//            contacts.append(newContact)
+//        } else {
+//            isShowingErrorAlert = true
+//        }
+//        return()
+//    }
+//
+//    var body: some View {
+//        VStack { // gjør denne til NavigationView
+//            Form {
+//                TextField("First name", text: $firstName)
+//                TextField("Last name", text: $lastName)
+//                TextField("Phone number", text: $phoneNumber)
+//                TextField("Email", text: $email).textCase(.lowercase)
+//                TextField("Address", text: $address)
+//
+//                PhotosPicker("Select avatar", selection: $avatarItem, matching: .images)
+//                if let avatarImage {
+//                    avatarImage
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 300, height: 300)
+//                }
+//            }.onChange(of: avatarItem) { _ in
+//                Task {
+//                    if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
+//                        if let uiImage = UIImage(data: data) {
+//                            avatarImage = Image(uiImage: uiImage)
+//                            return
+//                        }
+//                    }
+//
+//                    print("Failed")
+//                }
+//            }
+//            HStack {
+//                Button("Add") {
+//                    Task {
+//                        await addContact()
+//                    }
+//                }
+//            }
+//        }.alert("Oops! An error occured", isPresented: $isShowingErrorAlert) {
+//            Text("Some actions")
+//        } message: {
+//            Text("Some message")
+//        }
+//    }
+//}
+
+// ---------------------------------------------

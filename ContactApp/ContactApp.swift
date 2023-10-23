@@ -12,7 +12,11 @@ struct ContactApp: App { // @TODO: check todos in ProfileView, create favorites 
     var body: some Scene {
         WindowGroup {
             TabView {
-                ContactListView()
+                FavoritesView()
+                    .tabItem {
+                        Label("Favorites", systemImage: "heart")
+                    }
+                ContactListView(contacts: Contact.demoContacts, isAdmin: true)
                     .tabItem {
                         Label("Contacts", systemImage: "book")
                     }
